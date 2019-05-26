@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+  <group android:checkableBehavior="single">
+    <item
+      android:id="@+id/nav_camera"
+      android:title="Test 1" />
+  </group>
+
+  <item android:title="Otras opciones">
+    <menu>
+      <item
+        android:id="@+id/nav_battery_level"
+        android:title="Nivel de batería" />
+    </menu>
+  </item>
+
+</menu>
