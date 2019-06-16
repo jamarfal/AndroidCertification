@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import com.jamarfal.androidcertification.repository.FruitRepository;
+import com.jamarfal.androidcertification.ui.fruit.FruitListActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -41,9 +43,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
   @Override
   public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
     if (menuItem.getItemId() == R.id.nav_battery_level) {
       BatteryLevelActivity.startActivity(this);
       return true;
+    }else if(menuItem.getItemId() == R.id.nav_fruit_list){
+      FruitListActivity.startActivity(this);
     }
     return false;
   }
