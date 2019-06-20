@@ -10,6 +10,8 @@ import retrofit2.Response;
 
 public class FruitApiDataSource implements DataSource<Resource<List<FruitDto>>> {
 
+  public static final String CATEGORY = "Fruit";
+
   private ApiDataSourceProvider apiDataSourceProvider;
 
   public FruitApiDataSource() {
@@ -18,8 +20,13 @@ public class FruitApiDataSource implements DataSource<Resource<List<FruitDto>>> 
 
   @Override
   public Resource<List<FruitDto>> getAllData() {
+    return getPaginatedData(10, 0);
+  }
+
+  @Override
+  public Resource<List<FruitDto>> getPaginatedData(int limit, int offset) {
     Resource<List<FruitDto>> result;
-    Call<List<FruitDto>> fruitsCall = apiDataSourceProvider.getDataSource().getFruits("Pick Your Own", 1, 0);
+    Call<List<FruitDto>> fruitsCall = apiDataSourceProvider.getDataSource().getFruits(CATEGORY, limit, offset);
 
     try {
       Response<List<FruitDto>> response = fruitsCall.execute();
