@@ -1,5 +1,7 @@
 package com.jamarfal.androidcertification.repository;
 
+import java.util.Objects;
+
 public class Fruit {
 
   public static final Fruit EMPTY_FRUIT = new Fruit("-1", "", "", "", "");
@@ -56,5 +58,22 @@ public class Fruit {
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Fruit fruit = (Fruit) o;
+    return Objects.equals(id, fruit.id) &&
+        Objects.equals(item, fruit.item) &&
+        Objects.equals(category, fruit.category) &&
+        Objects.equals(farmName, fruit.farmName) &&
+        Objects.equals(phone, fruit.phone);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, item, category, farmName, phone);
   }
 }

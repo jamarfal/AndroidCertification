@@ -2,6 +2,9 @@ package com.jamarfal.androidcertification.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
+import android.arch.paging.DataSource;
+import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PagedList;
 import com.jamarfal.androidcertification.commons.AppExecutor;
 import com.jamarfal.androidcertification.commons.Resource;
 import com.jamarfal.androidcertification.repository.datasource.FruitMapper;
@@ -24,6 +27,14 @@ public class FruitRepository {
   public LiveData<Resource<List<Fruit>>> getAll() {
     fetchFruitFromNetwork();
     return transformCacheResponseToResourceResponse();
+  }
+
+  public LiveData<PagedList<Fruit>> getAllPaginated(){
+    DataSource.Factory<Integer, Fruit> paginatedData = cacheDataSource.getPaginatedData(0, 0).map(FruitMapper::dboToBO);
+    PagedList.Config config = new PagedList.Config.Builder()
+        .setPageSize(10)
+        .build();
+    return new LivePagedListBuilder<>(paginatedData, config).build();
   }
 
   private MediatorLiveData<Resource<List<Fruit>>> transformCacheResponseToResourceResponse() {

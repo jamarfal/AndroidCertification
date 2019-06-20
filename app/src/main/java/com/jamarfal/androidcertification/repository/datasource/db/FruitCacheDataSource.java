@@ -19,9 +19,8 @@ public class FruitCacheDataSource implements DataSource<LiveData<List<FruitEntit
     return fruitDataBase.fruitDao().getAll();
   }
 
-  @Override
-  public LiveData<List<FruitEntityDbo>> getPaginatedData(int limit, int offset) {
-    return null;
+  public android.arch.paging.DataSource.Factory<Integer, FruitEntityDbo> getPaginatedData(int limit, int offset) {
+    return fruitDataBase.fruitDao().getAllPaginated();
   }
 
   public void insert(final List<FruitEntityDbo> fruitsDboList) {

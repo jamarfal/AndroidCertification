@@ -18,6 +18,9 @@ public interface FruitDao {
   LiveData<List<FruitEntityDbo>> getAll();
 
   // PAGING
+  @Query("SELECT * FROM fruit_table")
+  DataSource.Factory<Integer, FruitEntityDbo> getAllPaginated();
+
   @Query("SELECT * FROM fruit_table WHERE item LIKE :fruitName")
   DataSource.Factory<Integer, FruitEntityDbo> getPagingByName(String fruitName);
 }

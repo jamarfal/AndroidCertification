@@ -23,7 +23,6 @@ public class FruitApiDataSource implements DataSource<Resource<List<FruitDto>>> 
     return getPaginatedData(10, 0);
   }
 
-  @Override
   public Resource<List<FruitDto>> getPaginatedData(int limit, int offset) {
     Resource<List<FruitDto>> result;
     Call<List<FruitDto>> fruitsCall = apiDataSourceProvider.getDataSource().getFruits(CATEGORY, limit, offset);

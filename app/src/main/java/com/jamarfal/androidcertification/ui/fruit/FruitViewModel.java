@@ -3,6 +3,7 @@ package com.jamarfal.androidcertification.ui.fruit;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.arch.paging.PagedList;
 import android.support.annotation.NonNull;
 import com.jamarfal.androidcertification.commons.Resource;
 import com.jamarfal.androidcertification.repository.Fruit;
@@ -22,6 +23,11 @@ public class FruitViewModel extends AndroidViewModel {
   LiveData<Resource<List<Fruit>>> getFruits() {
     return fruitRepository.getAll();
   }
+
+  LiveData<PagedList<Fruit>> getFruitsPaginated() {
+    return fruitRepository.getAllPaginated();
+  }
+
 
   public void add() {
     FruitEntityDbo fruitEntityDbo = new FruitEntityDbo("123", "Item nueov", "Cateogria nueva", "José Alberto", "Tlf");
