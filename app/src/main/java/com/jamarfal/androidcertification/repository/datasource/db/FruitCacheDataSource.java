@@ -19,6 +19,11 @@ public class FruitCacheDataSource implements DataSource<LiveData<List<FruitEntit
     return fruitDataBase.fruitDao().getAll();
   }
 
+  @Override
+  public LiveData<List<FruitEntityDbo>> getPaginatedData(int limit, int offset) {
+    return null;
+  }
+
   public void insert(final List<FruitEntityDbo> fruitsDboList) {
     if (!fruitsDboList.isEmpty()) {
       fruitDataBase.fruitDao().insert(fruitsDboList);

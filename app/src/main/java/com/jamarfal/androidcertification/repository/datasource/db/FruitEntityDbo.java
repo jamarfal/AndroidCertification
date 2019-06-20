@@ -2,15 +2,13 @@ package com.jamarfal.androidcertification.repository.datasource.db;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "fruit_table")
+@Entity(tableName = "fruit_table", primaryKeys = {"farmer_id", "item"})
 public class FruitEntityDbo {
 
   public static final FruitEntityDbo EMPTY_FRUIT = new FruitEntityDbo("-1", "", "", "", "");
 
-  @PrimaryKey
   @NonNull
   @ColumnInfo(name = "farmer_id")
   private String id;
